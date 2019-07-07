@@ -1,7 +1,12 @@
 package jce.processing;
 
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.IOException;
+import java.util.*;
 
 /**
  * Built-in class for processing Commands with {@link Runtime}
@@ -15,72 +20,53 @@ public class Processor extends Thread{
      */
     private Runtime runtime = Runtime.getRuntime();
 
-    private Process lastProcess = null;
+    @Getter private Map<Integer,Process> processList;
 
-    private StringBuilder logBuilder;
+    @Getter private String log;
 
     private String[] commands;
 
+    @Getter @Setter(value = AccessLevel.PACKAGE)
     private int processState = ProcessState.RUNNING;
 
 
     public Processor(String[] commands) {
         super();
         this.commands = commands;
-        logBuilder = new StringBuilder();
+        log = "";
+        processList = new HashMap<>();
     }
 
     @Override
     public void run() {
         super.run();
-
-        for (String command : commands) {
+        for (int index = 0 ; index < commands.length; index++) {
+            String command = commands[index];
             if (isTimeExceeded()) break;
-            appendLog(command);
-            if (!executeCommand(command)){
-                lastProcess = null;
-                break;
-            }
+            appendLog(numericalText(command,index+1));
+            executeCommand(command,index+1);
         }
-
         if (!isTimeExceeded()) setProcessState(ProcessState.FINISHED_BEFORE_EXCEED);
     }
 
-    private boolean executeCommand(String command){
+    private void executeCommand(String command, int commandIssue){
         try {
-            lastProcess = runtime.exec(command);
-            lastProcess.waitFor();
+            Process process = runtime.exec(command);
+            process.waitFor();
+            processList.put(commandIssue, process);
         } catch (IOException | InterruptedException e) {
-            appendLog(e.getMessage());
-            return false;
+            appendLog(numericalText(e.getMessage(),commandIssue));
         }
-
-        return true;
     }
 
     private void appendLog(String log){
-        logBuilder.append(log).append("\n");
+        this.log = log.concat(log).concat("\n");
     }
 
-    final String getLog() {
-        return logBuilder.toString();
+    private String numericalText(String text, int number){
+        return String.format("%d) %s",number,text);
     }
 
-
-    ///////////////////////// SETTER GETTER METHODS //////////////////////////////
-
-
-    final Process getLastProcess(){
-        return lastProcess;
-    }
-
-     private int getProcessState() {
-        return processState;
-    }
-
-      final void setProcessState(int processState) {
-        this.processState = processState;
-    }
 
      final boolean isRunning(){
         return getProcessState() == ProcessState.RUNNING;

@@ -10,14 +10,12 @@ public final class TimeExceedChecker {
     private Processor processor;
     private int limit;
 
-
     public void start(){
         long start = System.currentTimeMillis();
         processor.start();
         startCounting(start);
         onProcessFinish.onFinish(getProcessInfo());
     }
-
 
     private void startCounting(long start){
         while (!processor.isFinishedBeforeExceed()){
@@ -30,7 +28,7 @@ public final class TimeExceedChecker {
 
     private ProcessInfo getProcessInfo(){
         return ProcessInfo.builder()
-                .process(processor.getLastProcess())
+                .process(processor.getProcessList())
                 .log(processor.getLog())
                 .commands(commands)
                 .build();

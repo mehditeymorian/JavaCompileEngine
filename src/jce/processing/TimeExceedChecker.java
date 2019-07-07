@@ -5,10 +5,9 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public final class TimeExceedChecker {
 
-    private OnProcessFinish onProcessFinish;
-    private String[] commands;
     private Processor processor;
-    private int limit;
+    private int limitTime;
+    private OnProcessFinish onProcessFinish;
 
     public void start(){
         long start = System.currentTimeMillis();
@@ -19,7 +18,7 @@ public final class TimeExceedChecker {
 
     private void startCounting(long start){
         while (!processor.isFinishedBeforeExceed()){
-            if (isTimeExceeded(limit,start)){
+            if (isTimeExceeded(limitTime,start)){
                 processor.setProcessState(ProcessState.TIME_EXCEEDED);
                 break;
             }
@@ -30,7 +29,7 @@ public final class TimeExceedChecker {
         return ProcessInfo.builder()
                 .process(processor.getProcessList())
                 .log(processor.getLog())
-                .commands(commands)
+                .commands(processor.getCommands())
                 .build();
     }
 

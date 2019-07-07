@@ -24,7 +24,7 @@ public class Processor extends Thread{
 
     @Getter private String log;
 
-    private String[] commands;
+    @Getter private String[] commands;
 
     @Getter @Setter(value = AccessLevel.PACKAGE)
     private int processState = ProcessState.RUNNING;
@@ -58,10 +58,10 @@ public class Processor extends Thread{
             appendLog(numericalText(e.getMessage(),commandIssue));
         }
     }
-
-    private void appendLog(String log){
-        this.log = log.concat(log).concat("\n");
+    private void appendLog(String newLog){
+        this.log = this.log.concat(newLog).concat("\n");
     }
+
 
     private String numericalText(String text, int number){
         return String.format("%d) %s",number,text);

@@ -7,7 +7,7 @@ import lombok.Getter;
 import java.util.Map;
 
 @Builder
-class ProcessInfo {
+public class ProcessInfo {
     @Getter private Map<Integer,Process> process;
     @Getter private String log;
     @Getter private String[] commands;

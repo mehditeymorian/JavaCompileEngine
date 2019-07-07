@@ -1,21 +1,15 @@
 package jce.processing;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public final class TimeExceedChecker {
 
     private OnProcessFinish onProcessFinish;
-
+    private String[] commands;
+    private Processor processor;
     private int limit;
 
-    private String[] commands;
-
-    private Processor processor;
-
-    public TimeExceedChecker(Processor processor, String[] commands, int limit, OnProcessFinish onProcessFinish) {
-        this.processor = processor;
-        this.limit = limit;
-        this.commands = commands;
-        this.onProcessFinish = onProcessFinish;
-    }
 
     public void start(){
         long start = System.currentTimeMillis();

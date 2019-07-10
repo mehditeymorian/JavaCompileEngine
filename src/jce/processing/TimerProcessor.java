@@ -1,8 +1,12 @@
 package jce.processing;
 
 
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+
+
+import java.util.Map;
 
 import static jce.processing.TimerProcessorState.*;
 
@@ -16,6 +20,7 @@ public class TimerProcessor implements OnFinishListener {
     @NonNull private String[] commands;
     @NonNull private int timeExceedInMillis;
 
+    @Getter
     private TimerProcessorState processorState = NOT_FINISHED; // default value -- none of the options
 
     public void start(){
@@ -56,6 +61,14 @@ public class TimerProcessor implements OnFinishListener {
             // After Process
             if (processorState.timeNotExceeded()) onFinishListener.OnFinish(TASK_FINISHED_EARLY);
         });
+    }
+
+    private Map<Integer,String> getProcessList(){
+        return processor.getProcessList();
+    }
+
+    private String getLog(){
+        return processor.getLog();
     }
 
 }

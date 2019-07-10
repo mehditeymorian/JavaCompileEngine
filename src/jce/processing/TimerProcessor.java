@@ -3,12 +3,10 @@ package jce.processing;
 
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-
 
 import java.util.Map;
 
-import static jce.processing.TimerProcessorState.*;
+import static jce.processing.ProcessorState.*;
 
 public class TimerProcessor implements OnFinishListener {
 
@@ -20,7 +18,7 @@ public class TimerProcessor implements OnFinishListener {
     @NonNull private int timeExceedInMillis;
 
     @Getter
-    private TimerProcessorState processorState = NOT_FINISHED; // default value -- none of the options
+    private ProcessorState processorState = NOT_FINISHED; // default value -- none of the options
 
     public TimerProcessor(@NonNull String[] commands, @NonNull int timeExceedInMillis) {
         this.commands = commands;
@@ -42,7 +40,7 @@ public class TimerProcessor implements OnFinishListener {
     }
 
     @Override
-    public void OnFinish(TimerProcessorState state) {
+    public void OnFinish(ProcessorState state) {
         processorState = state;
         switch (state){
             case TIME_EXCEEDED:// Time Exceeded

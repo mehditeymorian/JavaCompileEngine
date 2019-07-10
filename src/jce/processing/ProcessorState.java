@@ -5,10 +5,11 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public enum TimerProcessorState {
+public enum ProcessorState {
     NOT_FINISHED(-1),
     TIME_EXCEEDED(0),
-    TASK_FINISHED_EARLY(1);
+    TASK_FINISHED_EARLY(1),
+    FINISHED(2);
 
     @NonNull
     @Getter

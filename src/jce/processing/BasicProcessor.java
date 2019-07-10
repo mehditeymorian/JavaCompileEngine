@@ -41,6 +41,9 @@ import java.util.stream.IntStream;
     @Setter
     private OnEachProcessListener onEachProcessListener;
 
+    @Getter
+    private long duration;
+
     public BasicProcessor(@NonNull String[] commands, Runnable afterProcess) {
         this.commands = commands;
         this.afterProcess = afterProcess;
@@ -49,6 +52,9 @@ import java.util.stream.IntStream;
     @Override
     public void run() {
         super.run();
+
+        duration = System.currentTimeMillis();
+
         //noinspection ResultOfMethodCallIgnored
         IntStream.range(0,commands.length).allMatch( index -> {
                     String command = commands[index];
@@ -59,7 +65,9 @@ import java.util.stream.IntStream;
                     return true; // Process successfully done
                 });
 
+        duration = System.currentTimeMillis() - duration;
         if (afterProcess != null) afterProcess.run();
+
     }
 
     private void invokeProcess(String command, int index) throws InterruptedException, IOException {

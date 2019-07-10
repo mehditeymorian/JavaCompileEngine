@@ -17,7 +17,7 @@ public class TimerProcessor implements OnFinishListener {
     private BasicProcessor processor;
     private OnFinishListener onFinishListener;
 
-    @NonNull private String[] commands;
+    @NonNull @Getter private String[] commands;
     @NonNull private int timeExceedInMillis;
 
     @Getter
@@ -63,11 +63,11 @@ public class TimerProcessor implements OnFinishListener {
         });
     }
 
-    private Map<Integer,String> getProcessList(){
+    public Map<Integer,String> getProcessList(){
         return processor.getProcessList();
     }
 
-    private String getLog(){
+    public String getLog(){
         return processor.getLog();
     }
 

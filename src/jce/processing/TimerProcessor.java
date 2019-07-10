@@ -4,8 +4,6 @@ package jce.processing;
 import lombok.Getter;
 import lombok.NonNull;
 
-import java.util.Map;
-
 import static jce.processing.ProcessorState.*;
 
 public class TimerProcessor implements OnFinishListener {
@@ -23,8 +21,8 @@ public class TimerProcessor implements OnFinishListener {
     public TimerProcessor(@NonNull String[] commands, @NonNull int timeExceedInMillis) {
         this.commands = commands;
         this.timeExceedInMillis = timeExceedInMillis;
-        timer = getTimer();
-        processor = getProcessor();
+        timer = buildTimer();
+        processor = buildProcessor();
     }
 
     public void start(){
@@ -55,7 +53,7 @@ public class TimerProcessor implements OnFinishListener {
         synchronized (this){ notify(); } // notify current thread that process is finished
     }
 
-    private Thread getTimer(){
+    private Thread buildTimer(){
         return new Thread(() -> {
             // Timer Runnable
             try { Thread.sleep(timeExceedInMillis); }
@@ -65,23 +63,15 @@ public class TimerProcessor implements OnFinishListener {
         });
     }
 
-    private BasicProcessor getProcessor(){
+    private BasicProcessor buildProcessor(){
         return new BasicProcessor(commands, () -> {
             // After Process
             if (processorState.timeNotExceeded()) onFinishListener.OnFinish(TASK_FINISHED_EARLY);
         });
     }
 
-    public Map<Integer,String> getProcessList(){
-        return processor.getProcessList();
-    }
-
-    public String getLog(){
-        return processor.getLog();
-    }
-
-    public void setOnEachProcessListener(OnEachProcessListener onEachProcessListener){
-        processor.setOnEachProcessListener(onEachProcessListener);
+    public BasicProcessor getProcessor(){
+        return processor;
     }
 
 }

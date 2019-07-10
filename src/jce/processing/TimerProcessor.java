@@ -10,7 +10,6 @@ import java.util.Map;
 
 import static jce.processing.TimerProcessorState.*;
 
-@RequiredArgsConstructor
 public class TimerProcessor implements OnFinishListener {
 
     private Thread timer;
@@ -23,10 +22,15 @@ public class TimerProcessor implements OnFinishListener {
     @Getter
     private TimerProcessorState processorState = NOT_FINISHED; // default value -- none of the options
 
-    public void start(){
-        onFinishListener = this;
+    public TimerProcessor(@NonNull String[] commands, @NonNull int timeExceedInMillis) {
+        this.commands = commands;
+        this.timeExceedInMillis = timeExceedInMillis;
         timer = getTimer();
         processor = getProcessor();
+    }
+
+    public void start(){
+        onFinishListener = this;
 
         timer.start();
         processor.start();
@@ -76,6 +80,10 @@ public class TimerProcessor implements OnFinishListener {
 
     public String getLog(){
         return processor.getLog();
+    }
+
+    public void setOnEachProcessListener(OnEachProcessListener onEachProcessListener){
+        processor.setOnEachProcessListener(onEachProcessListener);
     }
 
 }

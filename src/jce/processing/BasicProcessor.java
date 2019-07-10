@@ -30,7 +30,7 @@ import java.util.stream.IntStream;
     private Map<Integer, String> processList = new HashMap<>();
 
     @Getter
-    private String log = "";
+    private Map<Integer, String> log = new HashMap<>();
 
     @NonNull @Getter
     private String[] commands;
@@ -73,7 +73,7 @@ import java.util.stream.IntStream;
     }
 
     private void log(String newLog, int index){
-        this.log = this.log.concat(String.format("%d) %s",index,newLog)).concat("\n");
+        log.put(index,newLog);
         if (onEachProcessListener != null) onEachProcessListener.log(newLog, index);
     }
 

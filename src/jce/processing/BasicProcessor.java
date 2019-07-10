@@ -38,6 +38,9 @@ import java.util.stream.IntStream;
     @Setter
     private Runnable afterProcess;
 
+    @Setter
+    private OnEachProcessListener onEachProcessListener;
+
     public BasicProcessor(@NonNull String[] commands, Runnable afterProcess) {
         this.commands = commands;
         this.afterProcess = afterProcess;
@@ -62,11 +65,16 @@ import java.util.stream.IntStream;
     private void invokeProcess(String command, int index) throws InterruptedException, IOException {
         Process process = runtime.exec(command);
         process.waitFor();
-        processList.put(index, inputStreamToStr(process.getInputStream()));
+
+        String processResult = inputStreamToStr(process.getInputStream());
+        processList.put(index, processResult);
+        if (onEachProcessListener != null) onEachProcessListener.processResult(processResult, index);
+
     }
 
-    private void log(String newLog, int number){
-        this.log = this.log.concat(String.format("%d) %s",number,newLog)).concat("\n");
+    private void log(String newLog, int index){
+        this.log = this.log.concat(String.format("%d) %s",index,newLog)).concat("\n");
+        if (onEachProcessListener != null) onEachProcessListener.log(newLog, index);
     }
 
     private String inputStreamToStr(InputStream inputStream) throws IOException {

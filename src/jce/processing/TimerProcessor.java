@@ -30,6 +30,11 @@ public class TimerProcessor implements OnFinishListener {
 
         timer.start();
         processor.start();
+
+        synchronized (this){
+            try { wait(); }
+            catch (InterruptedException e) { e.printStackTrace(); }
+        } // stop current thread to wait for TimerProcess to finishing The Process or Timer to exceed the time
     }
 
     @Override
@@ -44,6 +49,8 @@ public class TimerProcessor implements OnFinishListener {
                 timer.interrupt();
                 break;
         }
+
+        synchronized (this){ notify(); } // notify current thread that process is finished
     }
 
     private Thread getTimer(){

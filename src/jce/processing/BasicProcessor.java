@@ -54,7 +54,7 @@ import java.util.stream.IntStream;
                     String command = commands[index];
                     log(command, index);
                     try { invokeProcess(command, index); }
-                    catch (IOException e) { log(e.getMessage(), index); }
+                    catch (IOException e) { addExceptionToLog(e.getMessage(), index); }
                     catch (InterruptedException e) { return false; /* Process at this index failed */ }
                     return true; // Process successfully done
                 });
@@ -75,6 +75,12 @@ import java.util.stream.IntStream;
     private void log(String newLog, int index){
         log.put(index,newLog);
         if (onEachProcessListener != null) onEachProcessListener.log(newLog, index);
+    }
+
+    private void addExceptionToLog(String exception, int index){
+        String logTxt = log.get(index);
+        logTxt = logTxt.concat("\n").concat(exception);
+        log.put(index,logTxt);
     }
 
     private String inputStreamToStr(InputStream inputStream) throws IOException {

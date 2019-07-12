@@ -16,8 +16,6 @@ public class Cleanup {
             case CPPC:
                 cppC(filePathify);
                 break;
-                default:
-                    throw new IllegalArgumentException(String.format("No Cleanup need for a %s program ",type.name()));
         }
     }
 

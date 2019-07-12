@@ -19,12 +19,16 @@ public class Compiler {
 
 
     public CompileResult compile() throws InterruptedException {
-        String[] commands = compileType.commands.apply(Pathify.create(fileAddress),parameters);
+        Pathify pathify = Pathify.create(fileAddress);
+        String[] commands = compileType.commands.apply(pathify,parameters);
 
         CompileResult compileResult = withExceedTime ? timerProcess(commands) : normalProcess(commands);
 
         compileResult.setWithExceedTime(withExceedTime);
         compileResult.setCommands(commands);
+
+        Cleanup.clean(pathify,compileType);
+
         return compileResult;
     }
 

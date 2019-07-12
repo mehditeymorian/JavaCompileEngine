@@ -13,27 +13,26 @@ public class TimerProcessor implements OnFinishListener {
     private OnFinishListener onFinishListener;
 
     @NonNull @Getter private String[] commands;
-    @NonNull private int timeExceedInMillis;
+    @NonNull private int exceedTimeInMillis;
 
     @Getter
     private ProcessorState processorState = NOT_FINISHED; // default value -- none of the options
 
-    public TimerProcessor(@NonNull String[] commands, @NonNull int timeExceedInMillis) {
+    public TimerProcessor(@NonNull String[] commands, @NonNull int exceedTimeInMillis) {
         this.commands = commands;
-        this.timeExceedInMillis = timeExceedInMillis;
+        this.exceedTimeInMillis = exceedTimeInMillis;
         timer = buildTimer();
         processor = buildProcessor();
     }
 
-    public void start(){
+    public void start() throws InterruptedException {
         onFinishListener = this;
 
         timer.start();
         processor.start();
 
         synchronized (this){
-            try { wait(); }
-            catch (InterruptedException e) { e.printStackTrace(); }
+             wait();
         } // stop current thread to wait for TimerProcess to finishing The Process or Timer to exceed the time
     }
 
@@ -56,7 +55,7 @@ public class TimerProcessor implements OnFinishListener {
     private Thread buildTimer(){
         return new Thread(() -> {
             // Timer Runnable
-            try { Thread.sleep(timeExceedInMillis); }
+            try { Thread.sleep(exceedTimeInMillis); }
             catch (InterruptedException ignored) {/* No Action Needed */ }
             if (processorState.taskNotFinishedEarly()) onFinishListener.OnFinish(TIME_EXCEEDED);
 

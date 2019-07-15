@@ -2,9 +2,16 @@ package jce.compiling;
 
 import lombok.Getter;
 
+/**
+ * <p>
+ *  A program that implements some method to
+ *  process the path of give address for compiling.</p>
+ *  Note: This program is Written with Lombok.
+ *  @see <a href="https://projectlombok.org/">Lombok Site</a>
+ */
 @Getter
 public class Pathify {
-    private String name;
+    private String fileName;
     private String extension;
     private String fullPath;
     private String parentPath; // return path of file folder
@@ -12,12 +19,12 @@ public class Pathify {
 
     private Pathify(String fullPath){
         this.fullPath = fullPath;
-        this.name = buildName();
-        this.extension = buildExtension();
-        this.parentPath = buildParentPath();
+        this.fileName = fileName();
+        this.extension = extension();
+        this.parentPath = parentPath();
     }
 
-    public static Pathify create(String fullPath){
+    public static Pathify of(String fullPath){
         return new Pathify(fullPath);
     }
 
@@ -25,26 +32,29 @@ public class Pathify {
         return fullPath.split("\\\\");
     }
 
-    public String getNameExtension(){
+    /**
+     * @return file name with extension in format of [FILE-NAME].[EXTENSION] . for instance Main.java
+     */
+    public String fileNameExtension(){
         String[] separatedPath = getSeparatedPath();
         return separatedPath[separatedPath.length-1];
     }
 
-    private String buildName(){
-        return getNameExtension().split("\\.")[0];
+    private String fileName(){
+        return fileNameExtension().split("\\.")[0];
     }
 
-    private String buildExtension(){
-        return getNameExtension().split("\\.")[1];
+    private String extension(){
+        return fileNameExtension().split("\\.")[1];
     }
 
-    private String buildParentPath(){
-        return fullPath.replace(getNameExtension(),"");
+    private String parentPath(){
+        return fullPath.replace(fileNameExtension(),"");
     }
 
-    public String getFullAddressWithoutExt(){
-        return getParentPath().concat(getName());
-    }
+    public String fullAddressWithoutExt(){
+        return getParentPath().concat(getFileName());
+}
 
 
 }

@@ -8,6 +8,10 @@ import lombok.Setter;
 
 import java.util.Map;
 
+/** A Data Class for returning result of {@link Compiler} Compiling.
+ *  Note: This program is Written with Lombok.
+ *  @see <a href="https://projectlombok.org/">Lombok Site</a>
+ */
 @Getter
 @Setter(AccessLevel.PACKAGE)
 @Builder

@@ -4,6 +4,13 @@ import lombok.AllArgsConstructor;
 
 import java.util.function.BiFunction;
 
+/** <p>
+ *  A program that Use {@link BiFunction} to generate commands.
+ *  based on choose compileType and given {@link Pathify},
+ *  return proper commands for compile that resource. </p>
+ *  Note: This program is Written with Lombok.
+ *  @see <a href="https://projectlombok.org/">Lombok Site</a>
+ */
 @AllArgsConstructor
 public enum CompileType {
     JAVAC(javac()),
@@ -22,7 +29,7 @@ public enum CompileType {
         return (pathify, parameters) -> {
 
             String compileCmd = "javac ".concat(pathify.getFullPath());
-            String execCmd = String.format("java -cp %s %s",pathify.getParentPath(),pathify.getName());
+            String execCmd = String.format("java -cp %s %s",pathify.getParentPath(),pathify.getFileName());
             if (parameters != null && !parameters.isEmpty()) execCmd = execCmd.concat(" ").concat(parameters);
 
             return new String[]{compileCmd,execCmd};
@@ -32,15 +39,17 @@ public enum CompileType {
     // TODO: 7/11/2019 NOT WORKING
     private static BiFunction<Pathify,String,String[]> kotlin(){
         return (pathify, parameters) -> {
-            String compileCmd = String.format("kotlinc %s -include-runtime -d %s.jar",pathify.getFullPath(), pathify.getFullAddressWithoutExt());
-            String execCmd = String.format("kotlin %s.jar", pathify.getFullAddressWithoutExt());
+            String compileCmd = String.format("kotlinc %s -include-runtime -d %s.jar",pathify.getFullPath(), pathify.fullAddressWithoutExt());
+            String execCmd = String.format("kotlin %s.jar", pathify.fullAddressWithoutExt());
             if (parameters != null && !parameters.isEmpty()) execCmd = execCmd.concat(" ").concat(parameters);
 
             return new String[]{compileCmd,execCmd};
         };
     }
 
-
+    /**
+     * this method is used for both Cpp and C resource files
+     */
     private static BiFunction<Pathify,String,String[]> cppC(){
         return (pathify, parameters) -> {
             String compileCmd = "g++ ".concat(pathify.getFullPath());

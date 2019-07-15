@@ -3,9 +3,14 @@ package jce.compiling;
 
 import java.io.File;
 
-public class Cleanup {
+/**
+ * Cleanup is a program that implements
+ * a self cleaning up system after compiling a file.
+ * some of the files after compiling produce extra files such as jar file or etc.
+ */
+ class Cleanup {
 
-    public static void clean(Pathify filePathify, CompileType type){
+    static void clean(Pathify filePathify, CompileType type){
         switch (type){
             case JAVAC:
                 javac(filePathify);
@@ -14,7 +19,7 @@ public class Cleanup {
                 kotlin(filePathify);
                 break;
             case CPPC:
-                cppC(filePathify);
+                cppC();
                 break;
         }
     }
@@ -31,7 +36,10 @@ public class Cleanup {
             file.delete();
     }
 
-    private static void cppC(Pathify filePathify){
+    /**
+     * this method is used for both Cpp and C resource files
+     */
+    private static void cppC(){
         File fil = new File("a.exe");
         if (fil.exists())//noinspection ResultOfMethodCallIgnored
             fil.delete();

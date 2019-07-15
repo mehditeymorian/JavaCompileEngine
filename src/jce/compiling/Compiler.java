@@ -32,10 +32,19 @@ public class Compiler {
      * @return a CompileResult is Data Class and consist of compile operation result and information.
      */
     public CompileResult compile() throws InterruptedException {
+        checkRequiredOptions();
         Pathify pathify = Pathify.of(fileAddress);
         CompileResult compileResult = getProcess( getCommands(pathify) );
         Cleanup.clean(pathify,compileType);
         return compileResult;
+    }
+
+    /**
+     * check the required options
+     */
+    private void checkRequiredOptions(){
+        if (fileAddress == null) throw new NullPointerException("Compiler: FileAddress cannot be Null!");
+        if (compileType == null) throw new NullPointerException("Compiler: CompileType cannot be Null!");
     }
 
     /**

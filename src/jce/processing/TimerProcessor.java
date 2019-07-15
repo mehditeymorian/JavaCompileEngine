@@ -6,17 +6,34 @@ import lombok.NonNull;
 
 import static jce.processing.ProcessorState.*;
 
+/**
+ * <p><TimerProcessor is pretty much the same as {@link BasicProcessor}
+ * with a timer that provide the class a TimeExceed Feature./p>
+ * Note: This program is Written with Lombok.
+ * @see <a href="https://projectlombok.org/">Lombok Site</a>
+ */
 public class TimerProcessor implements OnFinishListener {
 
     private Thread timer;
+
     private BasicProcessor processor;
+
     private OnFinishListener onFinishListener;
 
     @NonNull @Getter private String[] commands;
+
+    /**
+     * The Duration that expected to BasicProcessor be finished
+     */
     @NonNull private int exceedTimeInMillis;
 
+    /**
+     * state of process.
+     * NOT_FINISHED is the default.
+     */
     @Getter
-    private ProcessorState processorState = NOT_FINISHED; // default value -- none of the options
+    private ProcessorState processorState = NOT_FINISHED;
+
 
     public TimerProcessor(@NonNull String[] commands, @NonNull int exceedTimeInMillis) {
         this.commands = commands;
@@ -25,17 +42,26 @@ public class TimerProcessor implements OnFinishListener {
         processor = buildProcessor();
     }
 
+
     public void start() throws InterruptedException {
         onFinishListener = this;
 
         timer.start();
         processor.start();
 
+        // stop current thread to wait for one of the BasicProcessor or Timer finish sooner.
         synchronized (this){
              wait();
-        } // stop current thread to wait for TimerProcess to finishing The Process or Timer to exceed the time
+        }
     }
 
+    /**
+     * @param state state of process e.g. {@link ProcessorState#TASK_FINISHED_EARLY}. see {@link ProcessorState} for more states.
+     *              whenever BasicProcessor or Timer be finished, call OnFinish after.
+     *              if BasicProcessor finish first, call the onFinish with parameter of {@link ProcessorState#TASK_FINISHED_EARLY}.
+     *              if Timer finish first, call the onFinish with parameter of {@link ProcessorState#TIME_EXCEEDED}.
+     *              after one of the finished, finally, Notify TimerProcessor to continue.
+     */
     @Override
     public void OnFinish(ProcessorState state) {
         processorState = state;
@@ -52,6 +78,9 @@ public class TimerProcessor implements OnFinishListener {
         synchronized (this){ notify(); } // notify current thread that process is finished
     }
 
+    /**
+     * @return A Thread that sleep for {@link #exceedTimeInMillis} amount of time.
+     */
     private Thread buildTimer(){
         return new Thread(() -> {
             // Timer Runnable
@@ -62,6 +91,9 @@ public class TimerProcessor implements OnFinishListener {
         });
     }
 
+    /**
+     * @return A BasicProcessor with a AfterProcess Runnable that call OnFinish method after process finished.
+     */
     private BasicProcessor buildProcessor(){
         return new BasicProcessor(commands, () -> {
             // After Process

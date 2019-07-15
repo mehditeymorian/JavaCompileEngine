@@ -4,6 +4,10 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * An enumSet that show state of Process in each step.
+ * Note: This program is Written with Lombok. @see <a href="https://projectlombok.org/">Lombok Site</a>
+ */
 @RequiredArgsConstructor
 public enum ProcessorState {
     NOT_FINISHED(-1),

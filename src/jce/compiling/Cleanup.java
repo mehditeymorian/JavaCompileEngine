@@ -20,18 +20,20 @@ public class Cleanup {
     }
 
     private static void javac(Pathify filePathify){
-        File file = new File(filePathify.getFullAddressWithoutExt().concat(".class"));
+        File file = new File(filePathify.fullAddressWithoutExt().concat(".class"));
         if (file.exists()) //noinspection ResultOfMethodCallIgnored
             file.delete();
     }
 
     private static void kotlin(Pathify filePathify){
-        File file = new File(filePathify.getFullAddressWithoutExt().concat(".jar"));
+        File file = new File(filePathify.fullAddressWithoutExt().concat(".jar"));
         if (file.exists()) //noinspection ResultOfMethodCallIgnored
             file.delete();
     }
 
     private static void cppC(Pathify filePathify){
-        // TODO: 7/12/2019 COMPLETE THIS
+        File fil = new File("a.exe");
+        if (fil.exists())//noinspection ResultOfMethodCallIgnored
+            fil.delete();
     }
 }

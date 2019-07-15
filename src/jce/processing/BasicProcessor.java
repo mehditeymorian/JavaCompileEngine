@@ -94,8 +94,8 @@ import java.util.stream.IntStream;
     private String inputStreamToStr(InputStream inputStream) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(inputStream));
         String result ="";
-        String str;
-        while ( (str = input.readLine()) != null) result = result.concat(str);
+        String line;
+        while ( (line = input.readLine()) != null) result = result.concat(line).concat("\n");
         return result;
     }
 

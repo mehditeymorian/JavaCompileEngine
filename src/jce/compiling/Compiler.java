@@ -59,7 +59,6 @@ public class Compiler {
     private CompileResult getFromProcessor(BasicProcessor processor){
         return CompileResult.builder()
                 .compileResultList(processor.getProcessList())
-                .log(processor.getLog())
                 .duration(processor.getDuration())
                 .build();
     }

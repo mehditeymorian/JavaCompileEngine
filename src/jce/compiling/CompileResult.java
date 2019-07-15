@@ -14,7 +14,6 @@ import java.util.Map;
 public class CompileResult {
     private String[] commands;
     private Map<Integer, String> compileResultList;
-    private Map<Integer, String> log;
     private ProcessorState compileState;
     private long duration;
     private boolean withExceedTime;

@@ -12,35 +12,51 @@ import java.util.stream.IntStream;
 
 
 /**
- * Built-in class for processing Commands with {@link Runtime}
+ * The BasicProcessor program implements a set of methods to process commands with help of {@link Runtime}.
+ * This class extends from {@link Thread} so as it run on a different thread or simply it run in background
+ * Note: This program is Written with Lombok. @see <a href="https://projectlombok.org/">Lombok Site</a>
  */
-
-
 @RequiredArgsConstructor
  public class BasicProcessor extends Thread {
 
-
-    /**
-     * get {@link Runtime} from static method {@link Runtime#getRuntime()}
-     * use this object to invokeProcess commands
-     */
     private Runtime runtime = Runtime.getRuntime();
 
+    /**
+     * processList is a HashMap with numeral keys and String values that store result of {@link Process#getInputStream()} as String.
+     * keys are commands indices
+     */
     @Getter
     private Map<Integer, String> processList = new HashMap<>();
 
-    @Getter
-    private Map<Integer, String> log = new HashMap<>();
 
+    /**
+     * Commands that will be processed by {@link Runtime}
+     */
     @NonNull @Getter
     private String[] commands;
 
+    /**
+     * An action that need to be done after all commands processed
+     */
     @Setter
     private Runnable afterProcess;
 
+    /**
+     * An Interface that provide two method {@link OnEachProcessListener#processResult(String, int)}
+     *  {@link OnEachProcessListener#command(String, int)} for realtime feedback
+     */
     @Setter
     private OnEachProcessListener onEachProcessListener;
 
+    /**
+     * State values used in {@link #realtimeFeedback(int, String, int)} to write shorter code
+     */
+    public static final int COMMAND = 0;
+    public static final int RESULT = 1;
+
+    /**
+     * Duration of the process of whole commands
+     */
     @Getter
     private long duration;
 
@@ -52,45 +68,86 @@ import java.util.stream.IntStream;
     @Override
     public void run() {
         super.run();
+        duration = System.currentTimeMillis(); // start time of process
 
-        duration = System.currentTimeMillis();
-
+        // used IntStream to Iterate through commands and process them.
+        // while processing command if BasicProcessor become Interrupted, loop break and process will be finished
         //noinspection ResultOfMethodCallIgnored
         IntStream.range(0,commands.length).allMatch( index -> {
                     String command = commands[index];
-                    log(command, index);
-                    try { invokeProcess(command, index); }
-                    catch (IOException e) { addExceptionToLog(e.getMessage(), index); }
-                    catch (InterruptedException e) { return false; /* Process at this index failed */ }
-                    return true; // Process successfully done
+                    realtimeFeedback(COMMAND, command, index);
+                    return invokeProcess(command, index);
+
                 });
 
-        duration = System.currentTimeMillis() - duration;
-        if (afterProcess != null) afterProcess.run();
+        calculateDuration();
+        invokeAfterProcess();
 
     }
 
-    private void invokeProcess(String command, int index) throws InterruptedException, IOException {
-        Process process = runtime.exec(command);
-        process.waitFor();
+    /**
+     * @param command current command that is gonna processed
+     * @param index Current index. in other words, index of command parameter
+     * @return return false if process interrupted otherwise return true
+     */
+    private boolean invokeProcess(String command, int index){
+        try {
+            invokeProcessBody(command, index);
 
-        String processResult = inputStreamToStr(process.getInputStream());
+        } catch (IOException e) {
+            processList.put(index, e.getMessage());
+            realtimeFeedback(RESULT, e.getMessage(), index);
+
+        } catch (InterruptedException e) {
+            processList.put(index, e.getMessage());
+            realtimeFeedback(RESULT, e.getMessage(), index);
+            return false; /* Process at this index failed */
+        }
+
+        return true; // Process successfully done
+    }
+
+    private void invokeProcessBody(String command, int index) throws InterruptedException, IOException {
+        Process process = runtime.exec(command); // execute command
+        process.waitFor(); // wait for process to finish
+
+        String processResult = inputStreamToStr(process.getInputStream()); // convert process result to String
         processList.put(index, processResult);
-        if (onEachProcessListener != null) onEachProcessListener.processResult(processResult, index);
+        realtimeFeedback(RESULT, processResult, index);
 
     }
 
-    private void log(String newLog, int index){
-        log.put(index,newLog);
-        if (onEachProcessListener != null) onEachProcessListener.log(newLog, index);
+    /**
+     * @param type is {@link #COMMAND} or {@link #RESULT}
+     * @param value value of feedback base on the type
+     * @param index Current index. in other words, index of current process
+     */
+    private void realtimeFeedback(int type, String value, int index){
+        if (onEachProcessListener == null) return;
+
+        switch (type){
+            case COMMAND:
+                onEachProcessListener.command(value, index);
+                break;
+            case RESULT:
+                onEachProcessListener.processResult(value, index);
+                break;
+        }
     }
 
-    private void addExceptionToLog(String exception, int index){
-        String logTxt = log.get(index);
-        logTxt = logTxt.concat("\n").concat(exception);
-        log.put(index,logTxt);
+    private void calculateDuration(){
+        duration = System.currentTimeMillis() - duration;
     }
 
+    private void invokeAfterProcess(){
+        if (afterProcess != null) afterProcess.run();
+    }
+
+    /**
+     * @param inputStream is {@link Process#getInputStream()} that is the result of process
+     * @return converted of Process result
+     * @throws IOException
+     */
     private String inputStreamToStr(InputStream inputStream) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(inputStream));
         String result ="";

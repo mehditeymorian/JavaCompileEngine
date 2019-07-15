@@ -20,14 +20,17 @@ public class Compiler {
 
     public CompileResult compile() throws InterruptedException {
         Pathify pathify = Pathify.create(fileAddress);
-        String[] commands = compileType.commands.apply(pathify,parameters);
+        String[] commands = getCommands(pathify);
+        CompileResult compileResult = getProcess(commands);
+        Cleanup.clean(pathify,compileType);
+        return compileResult;
+    }
 
+    private CompileResult getProcess(String[] commands) throws InterruptedException {
         CompileResult compileResult = withExceedTime ? timerProcess(commands) : normalProcess(commands);
 
         compileResult.setWithExceedTime(withExceedTime);
         compileResult.setCommands(commands);
-
-        Cleanup.clean(pathify,compileType);
 
         return compileResult;
     }
@@ -59,6 +62,10 @@ public class Compiler {
                 .log(processor.getLog())
                 .duration(processor.getDuration())
                 .build();
+    }
+
+    private String[] getCommands(Pathify pathify){
+        return compileType.commands.apply(pathify,parameters);
     }
 
     private Integer getExceedTimeInMillis() {

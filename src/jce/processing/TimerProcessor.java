@@ -57,13 +57,13 @@ public class TimerProcessor implements OnFinishListener {
 
     /**
      * @param state state of process e.g. {@link ProcessorState#TASK_FINISHED_EARLY}. see {@link ProcessorState} for more states.
-     *              whenever BasicProcessor or Timer be finished, call OnFinish after.
+     *              whenever BasicProcessor or Timer be finished, call onFinish after.
      *              if BasicProcessor finish first, call the onFinish with parameter of {@link ProcessorState#TASK_FINISHED_EARLY}.
      *              if Timer finish first, call the onFinish with parameter of {@link ProcessorState#TIME_EXCEEDED}.
      *              after one of the finished, finally, Notify TimerProcessor to continue.
      */
     @Override
-    public void OnFinish(ProcessorState state) {
+    public void onFinish(ProcessorState state) {
         processorState = state;
         switch (state){
             case TIME_EXCEEDED:// Time Exceeded
@@ -86,18 +86,18 @@ public class TimerProcessor implements OnFinishListener {
             // Timer Runnable
             try { Thread.sleep(exceedTimeInMillis); }
             catch (InterruptedException ignored) {/* No Action Needed */ }
-            if (processorState.taskNotFinishedEarly()) onFinishListener.OnFinish(TIME_EXCEEDED);
+            if (processorState.taskNotFinishedEarly()) onFinishListener.onFinish(TIME_EXCEEDED);
 
         });
     }
 
     /**
-     * @return A BasicProcessor with a AfterProcess Runnable that call OnFinish method after process finished.
+     * @return A BasicProcessor with a AfterProcess Runnable that call onFinish method after process finished.
      */
     private BasicProcessor buildProcessor(){
         return new BasicProcessor(commands, () -> {
             // After Process
-            if (processorState.timeNotExceeded()) onFinishListener.OnFinish(TASK_FINISHED_EARLY);
+            if (processorState.timeNotExceeded()) onFinishListener.onFinish(TASK_FINISHED_EARLY);
         });
     }
 

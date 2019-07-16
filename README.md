@@ -1,16 +1,5 @@
 # JavaCompileEngine
-The CompileEngine You Need for your Project!
-A Java program that takes other languages programs, compile them and return the results.
-  ### Features
-  - Time Exceed
-  - Realtime Feedback
-  - Commandline Arguments (init parameters)
-  
-  ### TODO
-  - Package compiling
-  - More Languages
-  - More Optimized Code
-  - Testing I/O for Contests purposes
+JavaCompileEngine is a efficient open source Compiling Library, useable in Java frameworks for compiling programming languages files and Processing Commands with realtime feedback.
   
 ## Why Is This Project Useful?
 I wrote this project out of curiousity but it's useful it many situations. I list some of them below.

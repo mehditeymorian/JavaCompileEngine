@@ -37,8 +37,8 @@ To report a specific problem or feature request, [open a new issue on Github](ht
 
 ## Built With
 
-  * [Gradle](https://maven.apache.org/) - Automation System
-  * [Intellij IDEA](https://www.jetbrains.com/idea/) - Developing Environment
+  *  [Gradle](https://maven.apache.org/) - Automation System
+  *  [Intellij IDEA](https://www.jetbrains.com/idea/) - Developing Environment
 
 ## Versioning
 

@@ -20,11 +20,11 @@ You can download a **jar version** from GitHub's [releases page](https://github.
 Or you can Clone the project  
 
 Clone Over HTTPS
-~~~
+~~~git
  $ git clone https://github.com/MohammadNik/JavaCompileEngine.git
 ~~~
 Clone Over SSH
-~~~
+~~~git
  $ git clone git@github.com:MohammadNik/JavaCompileEngine.git
 ~~~
 

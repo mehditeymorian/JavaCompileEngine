@@ -18,11 +18,30 @@ I wrote this project out of curiousity but it's useful it many situations. I lis
   - Online Compilers
   - Online Code Practice with Purpose of Learning
 
-## How Do I Get Started?
-You can Clone the Project and check out The Resource for getting Ideas or even Developing.
-  ### I Want To Use It As Library:
-  There's a Jar version of Project. You can download and use it.
-  - [JavaCompileEngine : Version 1.0.0](https://github.com/MohammadNik/JavaCompileEngine/blob/master/JavaCompileEngine.jar?raw=true)
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+First You MUST Install Languages Compilers or interpreters 
+that you need to compile their files.
+Secondly You should add folder of Compiler or Interpreter Main Program to *Environment Variables*.  
+
+Check  [Link](https://github.com/MohammadNik/JavaCompileEngine/blob/master/SupportedLanguages) for supported Languages in **JavaCompileEngine**. 
+
+
+### Downloading
+You Can Download Jar version of You can download a jar from GitHub's [releases page](https://github.com/MohammadNik/JavaCompileEngine/release).  
+Or you can Clone the project  
+Clone Over HTTPS
+~~~
+ $ git clone https://github.com/MohammadNik/JavaCompileEngine.git
+~~~
+Clone Over SSH
+~~~
+ $ git clone git@github.com:MohammadNik/JavaCompileEngine.git
+~~~
 
 ## Built With
 

@@ -7,16 +7,16 @@ A Java program that takes other languages programs, compile them and return the 
   - Commandline Arguments (init parameters)
   
   ### TODO
-  - package compiling
+  - Package compiling
   - More Languages
   - More Optimized Code
-  - Testing I/O for Contests
+  - Testing I/O for Contests purposes
   
 ## Why Is This Project Useful?
 I wrote this project out of curiousity but it's useful it many situations. I list some of them below.
-  - Programming Contest
+  - Programming Contests
   - Online Compilers
-  - Online Practice with Purpose of learning
+  - Online Code Practice with Purpose of Learning
 
 ## How Do I Get Started?
 You can Clone the Project and check out The Resource for getting Ideas or even Developing.
@@ -35,7 +35,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [JavaCompileEngine Tags](https://github.com/MohammadNik/JavaCompileEngine/tags). 
 
 ## Authors
 
@@ -47,8 +47,8 @@ See also the list of [contributors](https://github.com/MohammadNik/JavaCompileEn
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/MohammadNik/JavaCompileEngine/blob/master/LICENSE) file for details
 
+
 ## Where Can I Get More Help, If I Need It?
 You can Email me or send messages via Instagram Direct
-### Contact Me
-- [Email](mailto:mehditeymorian322@gmail.com)
-- [Instagram](https://www.instagram.com/nik_teymorian/)
+* [Email](mailto:mehditeymorian322@gmail.com)
+* [Instagram](https://www.instagram.com/nik_teymorian/)

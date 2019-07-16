@@ -36,7 +36,7 @@ public class Compiler {
         checkRequiredOptions();
         Pathify pathify = Pathify.of(fileAddress);
         CompileResult compileResult = getProcess( getCommands(pathify) );
-        Cleanup.clean(pathify,compileType);
+        new Cleanup(pathify,compileType);
         return compileResult;
     }
 
@@ -44,8 +44,8 @@ public class Compiler {
      * check the required options
      */
     private void checkRequiredOptions(){
-        if (fileAddress == null) throw new NullPointerException("Compiler: FileAddress cannot be Null!");
-        if (compileType == null) throw new NullPointerException("Compiler: CompileType cannot be Null!");
+        if (fileAddress == null) throw new IllegalArgumentException("Compiler: FileAddress cannot be Null!");
+        if (compileType == null) throw new IllegalArgumentException("Compiler: CompileType cannot be Null!");
     }
 
     /**

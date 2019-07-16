@@ -1,5 +1,5 @@
 # JavaCompileEngine
-JavaCompileEngine is a efficient open source Compiling Library, useable in Java frameworks for compiling programming languages files and Processing Commands with realtime feedback. I wrote this project out of curiousity but it's useful in many situations e.g. Programming Contests Sites, Online Compilers, Online Code Learning and etc.
+JavaCompileEngine is a efficient open source Compiling Library, usable in Java frameworks for compiling programming languages files and Processing Commands with realtime feedback. I wrote this project out of curiosity but it's useful in many situations e.g. Programming Contests Sites, Online Compilers, Online Code Learning and etc.
 
 ## Getting Started
 
@@ -37,8 +37,8 @@ To report a specific problem or feature request, [open a new issue on Github](ht
 
 ## Built With
 
-  * [Gradle](https://maven.apache.org/) - Automation System
-  * [Intellij IDEA](https://www.jetbrains.com/idea/) - Developing Environment
+* [Gradle](https://maven.apache.org/) - Automation System
+* [Intellij IDEA](https://www.jetbrains.com/idea/) - Developing Environment
 
 ## Versioning
 
@@ -46,7 +46,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Mehdi Teymorian** - *Initial work* -  [MohammadMehdi](https://github.com/MohammadNik)
+* **Mehdi Teymorian**  *Initial work*   [Github Page](https://github.com/MohammadNik)
 
 See also the list of [contributors](https://github.com/MohammadNik/JavaCompileEngine/graphs/contributors) who participated in this project.
 

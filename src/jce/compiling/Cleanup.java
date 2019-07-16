@@ -10,7 +10,7 @@ import java.io.File;
  */
  class Cleanup {
 
-    static void clean(Pathify filePathify, CompileType type){
+    Cleanup(Pathify filePathify, CompileType type){
         switch (type){
             case JAVAC:
                 javac(filePathify);
@@ -21,16 +21,17 @@ import java.io.File;
             case CPPC:
                 cppC();
                 break;
+                default:
         }
     }
 
-    private static void javac(Pathify filePathify){
+    private void javac(Pathify filePathify){
         File file = new File(filePathify.fullAddressWithoutExt().concat(".class"));
         if (file.exists()) //noinspection ResultOfMethodCallIgnored
             file.delete();
     }
 
-    private static void kotlin(Pathify filePathify){
+    private void kotlin(Pathify filePathify){
         File file = new File(filePathify.fullAddressWithoutExt().concat(".jar"));
         if (file.exists()) //noinspection ResultOfMethodCallIgnored
             file.delete();
@@ -39,7 +40,7 @@ import java.io.File;
     /**
      * this method is used for both Cpp and C resource files
      */
-    private static void cppC(){
+    private void cppC(){
         File fil = new File("a.exe");
         if (fil.exists())//noinspection ResultOfMethodCallIgnored
             fil.delete();

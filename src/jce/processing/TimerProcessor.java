@@ -73,6 +73,7 @@ public class TimerProcessor implements OnFinishListener {
             case TASK_FINISHED_EARLY:// Process Finished Before Time Exceeded
                 timer.interrupt();
                 break;
+                default:
         }
 
         synchronized (this){ notify(); } // notify current thread that process is finished

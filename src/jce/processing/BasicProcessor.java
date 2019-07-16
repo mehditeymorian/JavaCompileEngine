@@ -133,6 +133,7 @@ import java.util.stream.IntStream;
             case RESULT:
                 onEachProcessListener.processResult(value, index);
                 break;
+                default:
         }
     }
 

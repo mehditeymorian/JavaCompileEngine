@@ -22,8 +22,8 @@ public class Compiler {
     private OnEachProcessListener onEachProcessListener;
 
     /**
-     * if not exceedTime set, {@link #getExceedTimeInMillis()}
-     * return this as default value.
+     * if no exceedTime set, {@link #getExceedTimeInMillis()}
+     * return this value as default value.
      */
     public static final int EXCEED_TIME_DEFAULT = 5000;
 

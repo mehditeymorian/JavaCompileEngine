@@ -111,7 +111,7 @@ import java.util.stream.IntStream;
         Process process = runtime.exec(command); // execute command
         process.waitFor(); // wait for process to finish
 
-        String processResult = inputStreamToStr(process.getInputStream()); // convert process result to String
+        String processResult = processResult(process);
         processList.put(index, processResult);
         realtimeFeedback(RESULT, processResult, index);
 
@@ -154,6 +154,14 @@ import java.util.stream.IntStream;
         String line;
         while ( (line = input.readLine()) != null) result = result.concat(line).concat("\n");
         return result;
+    }
+
+    /**
+     * @return  Result of process. if there wasn't any errors, return inputStream otherwise return errorStream as String.
+     */
+    private String processResult(Process process) throws IOException {
+        String input = inputStreamToStr(process.getInputStream()); // convert process result to String
+        return input.trim().isEmpty() ? inputStreamToStr(process.getErrorStream()) : input;
     }
 
 }

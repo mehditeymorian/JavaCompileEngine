@@ -36,11 +36,10 @@ public enum CompileType {
         };
     }
 
-    // TODO: 7/11/2019 NOT WORKING
     private static BiFunction<Pathify,String,String[]> kotlin(){
         return (pathify, parameters) -> {
-            String compileCmd = String.format("kotlinc %s -include-runtime -d %s.jar",pathify.getFullPath(), pathify.fullAddressWithoutExt());
-            String execCmd = String.format("kotlin %s.jar", pathify.fullAddressWithoutExt());
+            String compileCmd = String.format("cmd /c kotlinc %s -include-runtime -d %s.jar",pathify.getFullPath(), pathify.fullAddressWithoutExt());
+            String execCmd = String.format("cmd /c kotlin %s.jar", pathify.fullAddressWithoutExt());
             if (parameters != null && !parameters.isEmpty()) execCmd = execCmd.concat(" ").concat(parameters);
 
             return new String[]{compileCmd,execCmd};

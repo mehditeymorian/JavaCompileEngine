@@ -24,15 +24,15 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-First You MUST Install Languages Compilers or interpreters 
+First you MUST Install languages Compilers or Interpreters 
 that you need to compile their files.
-Secondly You should add folder of Compiler or Interpreter Main Program to *Environment Variables*.  
+Secondly you should add folder of Compiler or Interpreter Main Program to *Environment Variables*.  
 
-Check  [Link](https://github.com/MohammadNik/JavaCompileEngine/blob/master/SupportedLanguages) for supported Languages in **JavaCompileEngine**. 
+For supported Languages in **JavaCompileEngine** check [Supported Languages List](https://github.com/MohammadNik/JavaCompileEngine/blob/master/SupportedLanguages). 
 
 
 ### Downloading
-You Can Download Jar version of You can download a jar from GitHub's [releases page](https://github.com/MohammadNik/JavaCompileEngine/release).  
+You can download a **jar version** from GitHub's [releases page](https://github.com/MohammadNik/JavaCompileEngine/release).  
 Or you can Clone the project  
 Clone Over HTTPS
 ~~~

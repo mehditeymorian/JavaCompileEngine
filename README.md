@@ -49,7 +49,6 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 
 -  **Mehdi Teymorian** [Github Page](https://github.com/MohammadNik) 
-  -  *Initial work*   
 
 See also the list of [contributors](https://github.com/MohammadNik/JavaCompileEngine/graphs/contributors) who participated in this project.
 

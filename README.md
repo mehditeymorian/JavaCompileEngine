@@ -1,11 +1,5 @@
 # JavaCompileEngine
-JavaCompileEngine is a efficient open source Compiling Library, useable in Java frameworks for compiling programming languages files and Processing Commands with realtime feedback.
-  
-## Why Is This Project Useful?
-I wrote this project out of curiousity but it's useful it many situations. I list some of them below.
-  - Programming Contests
-  - Online Compilers
-  - Online Code Practice with Purpose of Learning
+JavaCompileEngine is a efficient open source Compiling Library, useable in Java frameworks for compiling programming languages files and Processing Commands with realtime feedback. I wrote this project out of curiousity but it's useful in many situations e.g. Programming Contests Sites, Online Compilers, Online Code Learning and etc.
 
 ## Getting Started
 
@@ -13,15 +7,17 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-First you MUST Install languages Compilers or Interpreters 
-that you need to compile their files.
-Secondly you should add folder of Compiler or Interpreter Main Program to *Environment Variables*.  
-
+Install Compilers or Interpreters that you need to compile their files.
+After, Add Compiler or Interpreter Main Program parent folder to *Environment Variables*.  
+~~~
+[DRIVE-NAME]:\[ADDRESS-TO-FOLDER]\Python37
+[DRIVE-NAME]:\[ADDRESS-TO-FOLDER]\jdk-12.0.1\bin
+~~~
 For supported Languages in **JavaCompileEngine** check [Supported Languages List](https://github.com/MohammadNik/JavaCompileEngine/blob/master/SupportedLanguages). 
 
 
 ### Downloading
-You can download a **jar version** from GitHub's [releases page](https://github.com/MohammadNik/JavaCompileEngine/release).  
+You can download a **jar version** from GitHub's [releases page](https://github.com/MohammadNik/JavaCompileEngine/releases).  
 Or you can Clone the project  
 
 Clone Over HTTPS
@@ -33,14 +29,18 @@ Clone Over SSH
  $ git clone git@github.com:MohammadNik/JavaCompileEngine.git
 ~~~
 
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Getting Help
+To report a specific problem or feature request, [open a new issue on Github](https://github.com/MohammadNik/JavaCompileEngine/graphs/contributors). For questions, suggestions, or anything else, [Email](mailto:mehditeymorian322@gmail.com) me or Direct me through [Instagram](https://www.instagram.com/nik_teymorian/)
+
 ## Built With
 
 * [Gradle](https://maven.apache.org/) - Automation System
 * [Intellij IDEA](https://www.jetbrains.com/idea/) - Developing Environment
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -55,9 +55,3 @@ See also the list of [contributors](https://github.com/MohammadNik/JavaCompileEn
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/MohammadNik/JavaCompileEngine/blob/master/LICENSE) file for details
-
-
-## Where Can I Get More Help, If I Need It?
-You can Email me or send messages via Instagram Direct
-* [Email](mailto:mehditeymorian322@gmail.com)
-* [Instagram](https://www.instagram.com/nik_teymorian/)

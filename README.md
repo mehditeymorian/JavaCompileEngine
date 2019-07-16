@@ -9,23 +9,22 @@ These instructions will get you a copy of the project up and running on your loc
 
 Install Compilers or Interpreters that you need to compile their files.  
 After, Add Compiler or Interpreter Main Program parent folder to *Environment Variables*.  
-~~~
+~~~Text
 [DRIVE-NAME]:\[ADDRESS-TO-FOLDER]\Python37
 [DRIVE-NAME]:\[ADDRESS-TO-FOLDER]\jdk-12.0.1\bin
 ~~~
 For supported Languages in **JavaCompileEngine** check [Supported Languages List](https://github.com/MohammadNik/JavaCompileEngine/blob/master/SupportedLanguages). 
-
 
 ### Downloading
 You can download a **jar version** from GitHub's [releases page](https://github.com/MohammadNik/JavaCompileEngine/releases).  
 Or you can Clone the project  
 
 Clone Over HTTPS
-~~~
+~~~git
  $ git clone https://github.com/MohammadNik/JavaCompileEngine.git
 ~~~
 Clone Over SSH
-~~~
+~~~git
  $ git clone git@github.com:MohammadNik/JavaCompileEngine.git
 ~~~
 
@@ -38,9 +37,8 @@ To report a specific problem or feature request, [open a new issue on Github](ht
 
 ## Built With
 
-* [Gradle](https://maven.apache.org/) - Automation System
-* [Intellij IDEA](https://www.jetbrains.com/idea/) - Developing Environment
-
+  * [Gradle](https://maven.apache.org/) - Automation System
+  * [Intellij IDEA](https://www.jetbrains.com/idea/) - Developing Environment
 
 ## Versioning
 
@@ -48,7 +46,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Mehdi Teymorian** - *Initial work* - [MohammadMehdi](https://github.com/MohammadNik)
+* **Mehdi Teymorian** - *Initial work* -  [MohammadMehdi](https://github.com/MohammadNik)
 
 See also the list of [contributors](https://github.com/MohammadNik/JavaCompileEngine/graphs/contributors) who participated in this project.
 

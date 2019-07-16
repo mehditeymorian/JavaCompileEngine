@@ -37,8 +37,8 @@ To report a specific problem or feature request, [open a new issue on Github](ht
 
 ## Built With
 
-* [Gradle](https://maven.apache.org/) - Automation System
-* [Intellij IDEA](https://www.jetbrains.com/idea/) - Developing Environment
+*  [Gradle](https://maven.apache.org/) - Automation System
+*  [Intellij IDEA](https://www.jetbrains.com/idea/) - Developing Environment
 
 ## Versioning
 
@@ -46,7 +46,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Mehdi Teymorian**  *Initial work*   [Github Page](https://github.com/MohammadNik)
+* **Mehdi Teymorian** [Github Page](https://github.com/MohammadNik) 
+  *  *Initial work*   
 
 See also the list of [contributors](https://github.com/MohammadNik/JavaCompileEngine/graphs/contributors) who participated in this project.
 

@@ -12,6 +12,7 @@ import lombok.Builder;
  *  Note: This program is Written with Lombok.
  *  @see <a href="https://projectlombok.org/">Lombok Site</a>
  */
+@SuppressWarnings("unused")
 @Builder
 public class Compiler {
     private String fileAddress;

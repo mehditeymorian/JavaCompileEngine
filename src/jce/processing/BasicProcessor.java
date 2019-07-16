@@ -51,8 +51,8 @@ import java.util.stream.IntStream;
     /**
      * State values used in {@link #realtimeFeedback(int, String, int)} to write shorter code
      */
-    public static final int COMMAND = 0;
-    public static final int RESULT = 1;
+    private static final int COMMAND = 0;
+    private static final int RESULT = 1;
 
     /**
      * Duration of the process of whole commands
@@ -60,6 +60,7 @@ import java.util.stream.IntStream;
     @Getter
     private long duration;
 
+    @SuppressWarnings("WeakerAccess")
     public BasicProcessor(@NonNull String[] commands, Runnable afterProcess) {
         this.commands = commands;
         this.afterProcess = afterProcess;
@@ -146,7 +147,6 @@ import java.util.stream.IntStream;
     /**
      * @param inputStream is {@link Process#getInputStream()} that is the result of process
      * @return converted of Process result
-     * @throws IOException
      */
     private String inputStreamToStr(InputStream inputStream) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(inputStream));

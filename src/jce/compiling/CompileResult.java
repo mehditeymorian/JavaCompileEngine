@@ -12,6 +12,7 @@ import java.util.Map;
  *  Note: This program is Written with Lombok.
  *  @see <a href="https://projectlombok.org/">Lombok Site</a>
  */
+@SuppressWarnings("WeakerAccess")
 @Getter
 @Setter(AccessLevel.PACKAGE)
 @Builder

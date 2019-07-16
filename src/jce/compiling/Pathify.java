@@ -9,6 +9,7 @@ import lombok.Getter;
  *  Note: This program is Written with Lombok.
  *  @see <a href="https://projectlombok.org/">Lombok Site</a>
  */
+@SuppressWarnings("WeakerAccess")
 @Getter
 public class Pathify {
     private String fileName;
@@ -19,8 +20,9 @@ public class Pathify {
 
     private Pathify(String fullPath){
         this.fullPath = fullPath;
-        this.fileName = fileName();
-        this.extension = extension();
+        String[] separatedPath = getSeparatedPath();
+        this.fileName = fileName(separatedPath);
+        this.extension = extension(separatedPath);
         this.parentPath = parentPath();
     }
 
@@ -36,16 +38,15 @@ public class Pathify {
      * @return file name with extension in format of [FILE-NAME].[EXTENSION] . for instance Main.java
      */
     public String fileNameExtension(){
-        String[] separatedPath = getSeparatedPath();
-        return separatedPath[separatedPath.length-1];
+        return String.format("%s.%s",getFileName(),getExtension());
     }
 
-    private String fileName(){
-        return fileNameExtension().split("\\.")[0];
+    private String fileName(String[] separatedPath){
+        return separatedPath[separatedPath.length-1].split("\\.")[0];
     }
 
-    private String extension(){
-        return fileNameExtension().split("\\.")[1];
+    private String extension(String[] separatedPath){
+        return separatedPath[separatedPath.length-1].split("\\.")[1];
     }
 
     private String parentPath(){
@@ -55,6 +56,5 @@ public class Pathify {
     public String fullAddressWithoutExt(){
         return getParentPath().concat(getFileName());
 }
-
 
 }

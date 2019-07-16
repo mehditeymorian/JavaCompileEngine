@@ -11,6 +11,7 @@ import java.util.function.BiFunction;
  *  Note: This program is Written with Lombok.
  *  @see <a href="https://projectlombok.org/">Lombok Site</a>
  */
+@SuppressWarnings("unused")
 @AllArgsConstructor
 public enum CompileType {
     JAVAC(javac()),

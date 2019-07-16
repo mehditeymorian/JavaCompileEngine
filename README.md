@@ -31,10 +31,10 @@ Clone Over SSH
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/MohammadNik/JavaCompileEngine/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Getting Help
-To report a specific problem or feature request, [open a new issue on Github](https://github.com/MohammadNik/JavaCompileEngine/graphs/contributors). For questions, suggestions, or anything else, [Email](mailto:mehditeymorian322@gmail.com) me or Direct me through [Instagram](https://www.instagram.com/nik_teymorian/)
+To report a specific problem or feature request, [open a new issue on Github](https://github.com/MohammadNik/JavaCompileEngine/blob/master/CONTRIBUTING.md). For questions, suggestions, or anything else, [Email](mailto:mehditeymorian322@gmail.com) me or Direct me through [Instagram](https://www.instagram.com/nik_teymorian/)
 
 ## Built With
 

@@ -4,7 +4,7 @@ A Java program that takes other languages programs, compile them and return the 
   ### Features
   - Time Exceed
   - Realtime Feedback
-  - ability to add Parameters
+  - Commandline Arguments (init parameters)
   
   ### TODO
   - package compiling
@@ -14,7 +14,6 @@ A Java program that takes other languages programs, compile them and return the 
   
 ## Why Is This Project Useful?
 I wrote this project out of curiousity but it's useful it many situations. I list some of them below.
-  ### Usages:
   - Programming Contest
   - Online Compilers
   - Online Practice with Purpose of learning

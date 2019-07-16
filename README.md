@@ -7,7 +7,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Install Compilers or Interpreters that you need to compile their files.
+Install Compilers or Interpreters that you need to compile their files.  
 After, Add Compiler or Interpreter Main Program parent folder to *Environment Variables*.  
 ~~~
 [DRIVE-NAME]:\[ADDRESS-TO-FOLDER]\Python37

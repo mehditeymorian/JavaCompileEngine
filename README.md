@@ -22,3 +22,7 @@ I wrote this project out of curiousity but it's useful it many situations. I lis
   - Online Practice with Purpose of learning
 
 ## How Do I Get Started?
+You can Clone the Project and check out The Resource for getting Ideas or even Developing.
+  ### I Want To Use It As Library:
+  There's a Jar version of Project. You can download and use it.
+  - [JavaCompileEngine : Version 1.0.0](https://github.com/MohammadNik/JavaCompileEngine/blob/master/JavaCompileEngine.jar?raw=true)

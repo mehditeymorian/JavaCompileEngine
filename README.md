@@ -19,7 +19,7 @@ For supported Languages in **JavaCompileEngine** check [Supported Languages List
 
 ### Downloading
 You can download a **jar version** from GitHub's [releases page](https://github.com/MohammadNik/JavaCompileEngine/releases).  
-Or you can Clone the project  
+Or you can Clone the project
 
 Clone Over HTTPS
 ~~~git
@@ -29,6 +29,7 @@ Clone Over SSH
 ~~~git
  $ git clone git@github.com:MohammadNik/JavaCompileEngine.git
 ~~~
+Note: This Project used Lombok. check [Lombok Install](https://projectlombok.org/) for different environment setups.
 
 ## Contributing
 

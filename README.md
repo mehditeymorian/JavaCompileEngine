@@ -31,6 +31,35 @@ Clone Over SSH
 ~~~
 Note: This Project used Lombok. check [Lombok Install](https://projectlombok.org/) for different environment setups.
 
+## How Do I Use JavaCompileEngine
+~~~java
+        CompileResult compileResult = Compiler.builder()
+                .fileAddress("H:\\fibonacci.java")
+                .compileType(CompileType.JAVA)
+                .parameters("100")
+                .withExceedTime(true)
+                .exceedTimeInMillis(3000)
+                .onEachProcessListener(new OnEachProcessListener() {
+                    @Override
+                    public void command(String command, int index) {
+                        System.out.printf("Command %d: %s\n",index, command);
+                    }
+
+                    @Override
+                    public void processResult(String result, int index) {
+                        System.out.printf("Command %d: %s\n",index, result);
+                    }
+                }).build()
+                .compile();
+
+        System.out.println("Compiling Finished!");
+
+        System.out.println(Arrays.toString(compileResult.getCommands()));
+        System.out.println(compileResult.getCompileState().name());
+        System.out.println(compileResult.getDuration());
+        System.out.println(compileResult.isWithExceedTime());
+~~~
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://github.com/MohammadNik/JavaCompileEngine/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.

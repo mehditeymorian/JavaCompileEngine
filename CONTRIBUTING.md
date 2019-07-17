@@ -14,4 +14,4 @@ Pull requests are welcome for all parts of the codebase. You can find instructio
 ## New Feature
 [search the issue tracker](https://github.com/MohammadNik/JavaCompileEngine/labels/enhancement) to see if
 someone else in the community has already created a ticket. If not, go ahead and
-[make one](https://github.com/MohammadNik/JavaCompileEngine/issues/new) but remember to use **Enhancement Label**.
+[make one](https://github.com/MohammadNik/JavaCompileEngine/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=).

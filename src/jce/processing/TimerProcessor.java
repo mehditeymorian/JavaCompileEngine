@@ -25,7 +25,7 @@ public class TimerProcessor implements OnFinishListener {
     /**
      * The Duration that expected to BasicProcessor be finished
      */
-    @NonNull private int exceedTimeInMillis;
+    private int exceedTimeInMillis;
 
     /**
      * state of process.
@@ -35,7 +35,7 @@ public class TimerProcessor implements OnFinishListener {
     private ProcessorState processorState = NOT_FINISHED;
 
 
-    public TimerProcessor(@NonNull String[] commands, @NonNull int exceedTimeInMillis) {
+    public TimerProcessor(@NonNull String[] commands, int exceedTimeInMillis) {
         this.commands = commands;
         this.exceedTimeInMillis = exceedTimeInMillis;
         timer = buildTimer();

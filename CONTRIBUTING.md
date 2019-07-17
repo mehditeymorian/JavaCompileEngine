@@ -1,13 +1,11 @@
 # Contributing
 As a first of point, Thank you for contributing to JavaCompileEngine. Contributing of all type are welcome.  It's people like you that make JavaCompileEngine such a great Library.
 
-
 ## Asking Question
 
 If you've noticed a bug or have a question that doesn't belong on the [Stack Overflow](https://stackoverflow.com/questions/tagged/javaCompileEngine), [search the issue tracker](https://github.com/MohammadNik/JavaCompileEngine/issues) to see if
 someone else in the community has already created a ticket. If not, go ahead and
 [make one](https://github.com/MohammadNik/JavaCompileEngine/issues/new)!
-
 
 ## Contributing Code
 

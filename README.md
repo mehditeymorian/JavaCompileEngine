@@ -49,7 +49,7 @@ Note: This Project used Lombok. check [Lombok Install](https://projectlombok.org
 
                     @Override
                     public void processResult(String result, int index) {
-                        System.out.printf("Command %d: %s\n",index, result);
+                        System.out.printf("Result %d: %s\n",index, result);
                     }
                 }).build()
                 .compile();

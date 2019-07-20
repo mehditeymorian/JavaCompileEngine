@@ -69,20 +69,16 @@ Please read [CONTRIBUTING.md](https://github.com/MohammadNik/JavaCompileEngine/b
 ## Getting Help
 To report a specific problem or feature request, [open a new issue on Github](https://github.com/MohammadNik/JavaCompileEngine/blob/master/CONTRIBUTING.md). For questions, suggestions, or anything else, [Email](mailto:mehditeymorian322@gmail.com) me or Direct me through [Instagram](https://www.instagram.com/nik_teymorian/)
 
-## Built With
 
--  [Gradle](https://maven.apache.org/) - Automation System
--  [Intellij IDEA](https://www.jetbrains.com/idea/) - Developing Environment
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [JavaCompileEngine Tags](https://github.com/MohammadNik/JavaCompileEngine/tags). 
-
-## Authors
-
--  **Mehdi Teymorian** [Github Page](https://github.com/MohammadNik) 
-
-See also the list of [contributors](https://github.com/MohammadNik/JavaCompileEngine/graphs/contributors) who participated in this project.
+## General Information
+- Built With
+  -  [Gradle](https://maven.apache.org/) - Automation System
+  -  [Intellij IDEA](https://www.jetbrains.com/idea/) - Developing Environment
+- Versioning
+  -  We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [JavaCompileEngine Tags](https://github.com/MohammadNik/JavaCompileEngine/tags). 
+- Authors
+  -  **Mehdi Teymorian** [Github Page](https://github.com/MohammadNik) 
+  - [contributors](https://github.com/MohammadNik/JavaCompileEngine/graphs/contributors) who participated in this project.
 
 ## License
 

@@ -1,6 +1,6 @@
-package jce.compiling;
+package main.java.jce.compiling;
 
-import jce.processing.ProcessorState;
+import main.java.jce.processing.ProcessorState;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package jce.compiling;
+package main.java.jce.compiling.utils;
 
 import lombok.Getter;
 

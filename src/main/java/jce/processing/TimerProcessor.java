@@ -1,10 +1,10 @@
-package jce.processing;
+package main.java.jce.processing;
 
 
 import lombok.Getter;
 import lombok.NonNull;
 
-import static jce.processing.ProcessorState.*;
+import static main.java.jce.processing.ProcessorState.*;
 
 /**
  * <p><TimerProcessor is pretty much the same as {@link BasicProcessor}

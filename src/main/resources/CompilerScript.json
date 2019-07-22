@@ -1,0 +1,69 @@
+[
+  {
+    "language": "java",
+    "needCleanup": true,
+    "commands": [
+       "javac {FPF}",
+       "java -cp {PPF} {FN}{PA}"
+    ],
+    "cleanupFiles": [
+      "{PPF}{FN}.class"
+    ]
+  },
+
+  {
+    "language": "java11",
+    "needCleanup": false,
+    "commands": [
+      "java {FPF}{PA}"
+    ]
+  },
+
+  {
+    "language": "kotlin",
+    "needCleanup": true,
+    "commands": [
+      "cmd /c kotlinc {FPF} -include-runtime -d {PPF}{FN}.jar",
+      "cmd /c kotlin {PPF}{FN}.jar{PA}"
+    ],
+    "cleanupFiles": [
+      "{PPF}{FN}.jar"
+    ]
+  },
+
+  {
+    "language": "cppC",
+    "needCleanup": true,
+    "commands": [
+      "g++  {FPF}",
+      "a.exe{PA}"
+    ],
+    "cleanupFiles": [
+      "{RCP}a.exe"
+    ]
+  },
+
+  {
+    "language": "python3",
+    "needCleanup": false,
+    "commands": [
+      "python {FPF}{PA}"
+    ]
+  },
+
+  {
+    "language": "nodeJs",
+    "needCleanup": false,
+    "commands": [
+      "node {FPF}{PA}"
+    ]
+  },
+
+  {
+    "language": "php",
+    "needCleanup": false,
+    "commands": [
+      "php {FPF}{PA}"
+    ]
+  }
+]

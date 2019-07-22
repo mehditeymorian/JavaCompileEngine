@@ -35,24 +35,22 @@ Note: This Project used Lombok. check [Lombok Install](https://projectlombok.org
 
 ## How Do I Use JavaCompileEngine?
 ~~~java
-        CompileResult compileResult = Compiler.builder()
-                .fileAddress("H:\\fibonacci.java")
-                .compileType(CompileType.JAVA)
-                .parameters("100")
+        CompileResult compileResult =  Compiler.builder()
+                .fileAddress("H:\\m.java")
+                .fileLanguage(Compiler.JAVA)
                 .withExceedTime(true)
-                .exceedTimeInMillis(3000)
+                .exceedTimeInMillis(200)
                 .onEachProcessListener(new OnEachProcessListener() {
                     @Override
                     public void command(String command, int index) {
-                        System.out.printf("Command %d: %s\n",index, command);
+                        System.out.printf("Command%d: %s\n",index+1,command);
                     }
 
                     @Override
                     public void processResult(String result, int index) {
-                        System.out.printf("Result %d: %s\n",index, result);
+                        System.out.printf("Result%d: %s\n",index+1,result);
                     }
-                }).build()
-                .compile();
+                }).build().compile();
 
         System.out.println("Compiling Finished!");
 

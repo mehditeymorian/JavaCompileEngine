@@ -1,4 +1,4 @@
-package jce.processing;
+package main.java.jce.processing;
 
 /**
  * A program to generate  a realtime feedback for eachProcess

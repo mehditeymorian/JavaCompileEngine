@@ -41,7 +41,7 @@ public class FileScript {
      * @param customPairs keys and values that used in custom CompilerScript.json
      * @param parameters inline parameters of program
      */
-    void setPathify(Pathify pathify, List<String[]> customPairs, String parameters) throws IllegalArgumentException {
+    protected void setPathify(Pathify pathify, List<String[]> customPairs, String parameters) throws IllegalArgumentException {
         if (commands == null) throw new IllegalArgumentException(String.format("%s: Commands[] cannot be null!",this.getClass().getSimpleName()));
         if (needCleanup && cleanupFiles == null) throw new IllegalArgumentException(String.format("%s: cleanupFiles[] cannot be null while needCleanup is set to true!",this.getClass().getSimpleName()));
 
@@ -64,11 +64,12 @@ public class FileScript {
      * Refer to {@link #getFormatted(String[], List)} Doc
      */
     private String getFormatted(String input, List<String[]> info){
+        String formatted = input;
         for (String[] pair : info) {
             String regex = String.format("\\{%s\\}",pair[0]); // pair[0] == code
-            input = replaceKeys(input,pair,regex);
+            formatted = replaceKeys(formatted,pair,regex);
         }
-        return input;
+        return formatted;
     }
 
     /**
@@ -79,12 +80,13 @@ public class FileScript {
      * @return formatted input
      */
     private String replaceKeys(String input, String[] pair, String regex) {
+        String formatted = input;
         String format = String.format("{%s}",pair[0]); // code = pair[0];
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(input);
-        while (matcher.find()) input = input.replace(format,pair[1]); // value = pair[1];
+        Matcher matcher = pattern.matcher(formatted);
+        while (matcher.find()) formatted = formatted.replace(format,pair[1]); // value = pair[1];
 
-        return input;
+        return formatted;
     }
 
     /**

@@ -1,5 +1,5 @@
 # JavaCompileEngine
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bc5268d7ccb74ede9bf16b482ebfea79)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MohammadNik/JavaCompileEngine&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bc5268d7ccb74ede9bf16b482ebfea79)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MohammadNik/JavaCompileEngine&amp;utm_campaign=Badge_Grade) | [View JCE's Documentation](https://github.com/MohammadNik/JavaCompileEngine/wiki)
 
 JavaCompileEngine is an efficient open source Compiling Library, usable in Java frameworks for compiling programming languages files and Processing Commands with realtime feedback. I wrote this project out of curiosity but it's useful in many situations e.g. Programming Contests Sites, Online Compilers, Online Code Learning and etc.  
 
@@ -49,6 +49,7 @@ Note: This Project used Lombok. check [Lombok Install](https://projectlombok.org
         System.out.println(compileResult.getDuration());
         System.out.println(compileResult.isWithExceedTime());
 ~~~
+See [Documentation](https://github.com/MohammadNik/JavaCompileEngine/wiki) for more Information.
 
 ## Contributing
 

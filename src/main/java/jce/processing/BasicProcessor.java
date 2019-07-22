@@ -91,15 +91,18 @@ import java.util.stream.IntStream;
      * @param index Current index. in other words, index of command parameter
      * @return return false if process interrupted otherwise return true
      */
-    private boolean invokeProcess(String command, int index){
+    private boolean invokeProcess(String command, int index) {
+        Process process = null;
         try {
-            invokeProcessBody(command, index);
+            process = runtime.exec(command); // execute command
+            invokeProcessBody(process, index);
 
         } catch (IOException e) {
             processList.put(index, e.getMessage());
             realtimeFeedback(RESULT, e.getMessage(), index);
 
         } catch (InterruptedException e) {
+            process.destroy();
             processList.put(index, e.getMessage());
             realtimeFeedback(RESULT, e.getMessage(), index);
             return false; /* Process at this index failed */
@@ -108,8 +111,7 @@ import java.util.stream.IntStream;
         return true; // Process successfully done
     }
 
-    private void invokeProcessBody(String command, int index) throws InterruptedException, IOException {
-        Process process = runtime.exec(command); // execute command
+    private void invokeProcessBody(Process process, int index) throws InterruptedException, IOException {
         process.waitFor(); // wait for process to finish
 
         String processResult = processResult(process);

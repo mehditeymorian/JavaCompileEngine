@@ -1,10 +1,16 @@
-package jce.compiling;
+package main.java.jce.compiling;
 
-import jce.processing.BasicProcessor;
-import jce.processing.OnEachProcessListener;
-import jce.processing.ProcessorState;
-import jce.processing.TimerProcessor;
 import lombok.Builder;
+import main.java.jce.compiling.utils.FileScript;
+import main.java.jce.compiling.utils.FileScriptCreator;
+import main.java.jce.compiling.utils.Pathify;
+import main.java.jce.processing.BasicProcessor;
+import main.java.jce.processing.OnEachProcessListener;
+import main.java.jce.processing.ProcessorState;
+import main.java.jce.processing.TimerProcessor;
+
+import java.io.File;
+import java.util.List;
 
 /**<p>
  * Compiler is a Concise Program with a builder that
@@ -16,7 +22,13 @@ import lombok.Builder;
 @Builder
 public class Compiler {
     private String fileAddress;
-    private CompileType compileType;
+    private String fileLanguage;
+    private String compilerScriptPath;
+    /**
+     * pairs refer to keys and values that used in CompilerScript. if CompilerScript is written manually
+     * in some situations, it may needs custom pairs
+     */
+    private List<String[]> customPairs;
     private String parameters;
     private Integer exceedTimeInMillis;
     private boolean withExceedTime;
@@ -28,15 +40,25 @@ public class Compiler {
      */
     public static final int EXCEED_TIME_DEFAULT = 5000;
 
+    // languages in default CompilerScript
+    public static final String C = "cppC";
+    public static final String CPP = "cppC";
+    public static final String JAVA = "java";
+    public static final String JAVA11 = "java11";
+    public static final String JAVASCRIPT = "nodeJs";
+    public static final String KOTLIN = "kotlin";
+    public static final String NODEJS = "nodeJs";
+    public static final String PHP = "php";
+    public static final String PYTHON3 = "python3";
 
     /**
      * @return a CompileResult is Data Class and consist of compile operation result and information.
      */
     public CompileResult compile() throws InterruptedException {
         checkRequiredOptions();
-        Pathify pathify = Pathify.of(fileAddress);
-        CompileResult compileResult = getProcess( getCommands(pathify) );
-        new Cleanup(pathify,compileType);
+        FileScript fileScript = getFileScript(Pathify.of(fileAddress));
+        CompileResult compileResult = getProcess( fileScript.getCommands() );
+        cleanup(fileScript.getCleanupFiles());
         return compileResult;
     }
 
@@ -45,7 +67,7 @@ public class Compiler {
      */
     private void checkRequiredOptions(){
         if (fileAddress == null) throw new IllegalArgumentException("Compiler: FileAddress cannot be Null!");
-        if (compileType == null) throw new IllegalArgumentException("Compiler: CompileType cannot be Null!");
+        if (fileLanguage == null) throw new IllegalArgumentException("Compiler: CompileType cannot be Null!");
     }
 
     /**
@@ -93,13 +115,27 @@ public class Compiler {
     }
 
     /**
-     * @return proper command to compile the file base on CompileType and fileAddress
+     * @param paths paths of files that need to be deleted after compiling
      */
-    private String[] getCommands(Pathify pathify){
-        return compileType.commands.apply(pathify,parameters);
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    private void cleanup(String[] paths){
+        if (paths == null) return;
+
+        for (String path : paths) {
+            File file = new File(path);
+            if (file.exists()) file.delete();
+        }
+    }
+
+    /**
+     * @return a FileScript that contains information about commands and cleanup
+     */
+    private FileScript getFileScript(Pathify pathify) {
+        return new FileScriptCreator(pathify, fileLanguage, parameters, compilerScriptPath, customPairs).get();
     }
 
     private Integer getExceedTimeInMillis() {
         return exceedTimeInMillis == null ? EXCEED_TIME_DEFAULT : exceedTimeInMillis;
     }
+
 }

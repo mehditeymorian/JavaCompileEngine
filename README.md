@@ -9,16 +9,6 @@ JavaCompileEngine is an efficient open source Compiling Library, usable in Java 
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Prerequisites
-
-Install Compilers or Interpreters that you need to compile their files.  
-After, Add Compiler or Interpreter Main Program parent folder to *Environment Variables*.  
-~~~Text
-[DRIVE-NAME]:\[ADDRESS-TO-FOLDER]\Python37
-[DRIVE-NAME]:\[ADDRESS-TO-FOLDER]\jdk-12.0.1\bin
-~~~
-For supported Languages in **JavaCompileEngine** check [Supported Languages List](https://github.com/MohammadNik/JavaCompileEngine/blob/master/SupportedLanguages). 
-
 ### Downloading
 You can download a **jar version** from GitHub's [releases page](https://github.com/MohammadNik/JavaCompileEngine/releases).  
 Or you can Clone the project

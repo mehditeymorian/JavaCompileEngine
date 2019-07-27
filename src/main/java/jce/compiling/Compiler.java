@@ -118,7 +118,7 @@ public class Compiler {
      * @param paths paths of files that need to be deleted after compiling
      */
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    private void cleanup(String[] paths){
+    public static void cleanup(String[] paths){
         if (paths == null) return;
 
         for (String path : paths) {

@@ -1,13 +1,12 @@
 package main.java.jce.compiling.utils;
 
 import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.net.URL;
+import java.io.*;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,20 +34,17 @@ public class FileScriptCreator {
         return fileScript;
     }
 
-    private String getCompilerScriptPath() {
-        if (compilerScriptPath != null) return compilerScriptPath;
+    private InputStream getCompilerScriptPath() {
+        if (compilerScriptPath != null) {
+            try { return new FileInputStream(compilerScriptPath); }
+            catch (FileNotFoundException e) { e.printStackTrace();}
+        }
 
-
-        URL defaultScript = getDefaultCompilerScriptPath();
-        if (defaultScript == null) throw new IllegalArgumentException(String.format(
-                "%s: Cannot find default CompilerScript",
-                getClass().getSimpleName() ));
-
-        return defaultScript.getFile();
+        return getDefaultCompilerScriptPath();
     }
 
-    private URL getDefaultCompilerScriptPath() {
-        return getClass().getClassLoader().getResource("main/resources/CompilerScript.json");
+    private InputStream getDefaultCompilerScriptPath() {
+        return getClass().getClassLoader().getResourceAsStream("main/resources/CompilerScript.json");
     }
 
     private void checkNullity(FileScript fileScript) {
@@ -64,9 +60,7 @@ public class FileScriptCreator {
      * @return All the FileScripts in CompilerScript
      */
     private FileScript[] getFileScripts() {
-        try { return new Gson().fromJson(new FileReader(getCompilerScriptPath()),FileScript[].class); }
-        catch (FileNotFoundException e) { e.printStackTrace(); }
-        return null;
+        return new Gson().fromJson(new JsonReader(new InputStreamReader(getCompilerScriptPath())),FileScript[].class);
     }
 
     /**

@@ -68,6 +68,9 @@ To report a specific problem or feature request, [open a new issue on Github](ht
 - Authors
   -  **Mehdi Teymorian** [Github Page](https://github.com/MohammadNik) 
   - [contributors](https://github.com/MohammadNik/JavaCompileEngine/graphs/contributors) who participated in this project.
+  
+## Donate
+- [![Paypal](https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU5N5ND4T2RWQ&source=url/)
 
 ## License
 

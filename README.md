@@ -71,6 +71,7 @@ To report a specific problem or feature request, [open a new issue on Github](ht
   - [contributors](https://github.com/MohammadNik/JavaCompileEngine/graphs/contributors) who participated in this project.
   
 ## Donate
+If this project helped you or solved your problem, make a donation and help me to get a better education and make more open source projects.   
 - [![Paypal](https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU5N5ND4T2RWQ&source=url/)
 - [![Paypal](https://www.zarinpal.com/icons/favicon-16x16.png) ZarinPal](https://zarinp.al/@mehdit)
 

@@ -21,7 +21,8 @@ Clone Over SSH
 ~~~git
  $ git clone git@github.com:MohammadNik/JavaCompileEngine.git
 ~~~
-Note: This Project used Lombok. check [Lombok Install](https://projectlombok.org/) for different environment setups.
+**Note**: This Project used Lombok. check [Lombok Install](https://projectlombok.org/) for different environment setups.
+**Note**: For working properly, you need to add [Gson](https://github.com/google/gson) to your project.
 
 ## How Do I Use JavaCompileEngine?
 ~~~java

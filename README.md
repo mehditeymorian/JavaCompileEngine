@@ -10,7 +10,7 @@ JavaCompileEngine is an efficient open source Compiling Library, usable in Java 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Downloading
-You can download a **jar version** from GitHub's [releases page](https://github.com/MohammadNik/JavaCompileEngine/releases).  
+You can download a **jar version** from GitHub's [releases page](https://github.com/MohammadNik/JavaCompileEngine/releases) for using as a library.  
 Or you can Clone the project
 
 Clone Over HTTPS
@@ -21,7 +21,7 @@ Clone Over SSH
 ~~~git
  $ git clone git@github.com:MohammadNik/JavaCompileEngine.git
 ~~~
-**Note**: This Project used Lombok. check [Lombok Install](https://projectlombok.org/) for different environment setups.   
+**Note**: This Project used Lombok. check [Lombok Install](https://projectlombok.org/) for different environment setups if you want to develope to project otherwise, it's not neccessary.   
 **Note**: For working properly, you need to add [Gson](https://github.com/google/gson) to your project.
 
 ## How Do I Use JavaCompileEngine?
